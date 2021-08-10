@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "pg": "latest",
+        "pg-connection-string": "latest",
+        "prompt": "latest"
+    }
+}
