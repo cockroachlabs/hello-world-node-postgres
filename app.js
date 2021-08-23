@@ -6,7 +6,19 @@ const prompt = require("prompt");
 
   prompt.start()
   const URI = await prompt.get("connectionString");
-  const connectionString = await URI.connectionString.replace('$HOME', process.env.HOME);
+  var connectionString;
+  if (URI.connectionString.includes("env:appdata")) {
+    connectionString = await URI.connectionString.replace(
+      "$env:appdata",
+      process.env.APPDATA
+    );
+  }
+  else {
+    connectionString = await URI.connectionString.replace(
+      "$HOME",
+      process.env.HOME
+    );
+  }
   var config = parse(connectionString);
   config.port = 26257;
   config.database = 'defaultdb';
