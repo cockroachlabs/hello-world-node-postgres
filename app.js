@@ -15,7 +15,7 @@ const prompt = require("prompt");
     );
   }
   // Expand $HOME environment variable in UNIX connection string
-  else {
+  else if (URI.connectionString.includes("HOME")) {
     connectionString = await URI.connectionString.replace(
       "$HOME",
       process.env.HOME
